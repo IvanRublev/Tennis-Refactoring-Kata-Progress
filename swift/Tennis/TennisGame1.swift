@@ -101,23 +101,32 @@ class TennisGame1: TennisGame {
                 score = "\(score)-"
                 tempScore = score2
             }
-            switch tempScore {
-            case 0:
-                score = "\(score)Love"
-                
-            case 1:
-                score = "\(score)Fifteen"
-                
-            case 2:
-                score = "\(score)Thirty"
-                
-            case 3:
-                score = "\(score)Forty"
-                
-            default:
-                break
-            }
+            let tempScoreName = standardName(for: tempScore)
+            score = "\(score)\(tempScoreName)"
         }
         return score
+    }
+    
+    private func standardName(for score: Int) -> String {
+        let name: String
+        
+        switch score {
+        case 0:
+            name = "Love"
+        
+        case 1:
+            name = "Fifteen"
+            
+        case 2:
+            name = "Thirty"
+            
+        case 3:
+            name = "Forty"
+            
+        default:
+            fatalError("No name for score greater then 3.")
+        }
+        
+        return name
     }
 }
