@@ -10,8 +10,6 @@ import Foundation
 class TennisGame1: TennisGame {
     private let player1: String
     private let player2: String
-    private var score1 = Score()
-    private var score2 = Score()
     private let scores: [String : Score]
     
     required init(player1: String, player2: String) {
@@ -19,8 +17,8 @@ class TennisGame1: TennisGame {
         self.player2 = player2
 
         var scores = [String : Score]()
-        scores[player1] = score1
-        scores[player2] = score2
+        scores[player1] = Score()
+        scores[player2] = Score()
         self.scores = scores
     }
 
@@ -29,19 +27,17 @@ class TennisGame1: TennisGame {
     }
     
     var score: String? {
-        if score1 == score2 {
+        if scores[player1]! == scores[player2]! {
             return nameOfEqualScore()
         }
-        else if score1.isAfter4PointGame || score2.isAfter4PointGame {
+        if scores.values.contains(where: { $0.isAfter4PointGame }) {
             return nameOfGreaterThenFourScore()
         }
-        else {
-            return nameOfLessThenFourScore()
-        }
+        return nameOfLessThenFourScore()
     }
     
     private func nameOfEqualScore() -> String {
-        let score = score1.equalName
+        let score = scores[player1]!.equalName
         return score
     }
     
@@ -53,7 +49,7 @@ class TennisGame1: TennisGame {
     }
     
     private func advantageName() -> String {
-        let diff = score1.absoluteAdvantage(for: score2)
+        let diff = scores[player1]!.absoluteAdvantage(for: scores[player2]!)
         if diff == 1 {
             return "Advantage"
         }
@@ -65,10 +61,10 @@ class TennisGame1: TennisGame {
     private func leadingPlayerName() -> String {
         let leadingPlayer: String
 
-        if score1 > score2 {
+        if scores[player1]! > scores[player2]! {
             leadingPlayer = player1
         }
-        else if score1 < score2 {
+        else if scores[player1]! < scores[player2]! {
             leadingPlayer = player2
         }
         else {
@@ -79,7 +75,7 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfLessThenFourScore() -> String {
-        let score = "\(score1.name)-\(score2.name)"
+        let score = "\(scores[player1]!.name)-\(scores[player2]!.name)"
         return score
     }
 }
