@@ -30,19 +30,7 @@ class TennisGame1: TennisGame {
     var score: String? {
         var score = ""
         if score1 == score2 {
-            switch score1 {
-            case 0:
-                score = "Love-All"
-
-            case 1:
-                score = "Fifteen-All"
-
-            case 2:
-                score = "Thirty-All"
-
-            default:
-                score = "Deuce"
-            }
+            return nameOfEqualScore()
         }
         else if score1 >= 4 || score2 >= 4 {
             let minusResult = score1-score2
@@ -86,6 +74,24 @@ class TennisGame1: TennisGame {
                     break
                 }
             }
+        }
+        return score
+    }
+    
+    private func nameOfEqualScore() -> String {
+        var score = ""
+        switch score1 {
+        case 0:
+            score = "Love-All"
+            
+        case 1:
+            score = "Fifteen-All"
+            
+        case 2:
+            score = "Thirty-All"
+            
+        default:
+            score = "Deuce"
         }
         return score
     }
