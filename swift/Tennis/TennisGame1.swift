@@ -58,31 +58,37 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfGreaterThenFourScore() -> String {
-        let player1Ahead = score1-score2
-        assert(player1Ahead != 0, "Can't happen here")
-        
-        let leadingPlayer: String
-        if player1Ahead > 0 {
-            leadingPlayer = player1
-        }
-        else {
-            leadingPlayer = player2
-        }
-        
-        let aheadAbsolute = abs(player1Ahead)
-        let advantage = advantageName(forAheadScore: aheadAbsolute)
-
+        let advantage = advantageName()
+        let leadingPlayer = leadingPlayerName()
         let score = "\(advantage) \(leadingPlayer)"
         return score
     }
     
-    private func advantageName(forAheadScore score: Int) -> String {
-        if score == 1 {
+    private func advantageName() -> String {
+        let diff = abs(score1-score2)
+        if diff == 1 {
             return "Advantage"
         }
         else {
             return "Win for"
         }
+    }
+    
+    private func leadingPlayerName() -> String {
+        let leadingPlayer: String
+
+        let player1Ahead = score1-score2
+        if player1Ahead > 0 {
+            leadingPlayer = player1
+        }
+        else if player1Ahead < 0 {
+            leadingPlayer = player2
+        }
+        else {
+            leadingPlayer = "none"
+        }
+        
+        return leadingPlayer
     }
     
     private func nameOfLessThenFourScore() -> String {
