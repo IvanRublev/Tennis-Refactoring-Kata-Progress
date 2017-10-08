@@ -28,7 +28,6 @@ class TennisGame1: TennisGame {
     }
     
     var score: String? {
-        var score = ""
         if score1 == score2 {
             return nameOfEqualScore()
         }
@@ -38,7 +37,6 @@ class TennisGame1: TennisGame {
         else {
             return nameOfLessThenFourScore()
         }
-        return score
     }
     
     private func nameOfEqualScore() -> String {
