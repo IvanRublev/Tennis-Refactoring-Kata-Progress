@@ -8,17 +8,17 @@
 import Foundation
 
 class TennisGame1: TennisGame {
-    private let player1: String
-    private let player2: String
+    private let player1: Player
+    private let player2: Player
     private let scores: [String : Score]
     
     required init(player1: String, player2: String) {
-        self.player1 = player1
-        self.player2 = player2
+        self.player1 = Player(name: player1)
+        self.player2 = Player(name: player2)
 
         var scores = [String : Score]()
-        scores[player1] = Score()
-        scores[player2] = Score()
+        scores[player1] = self.player1.score
+        scores[player2] = self.player2.score
         self.scores = scores
     }
 
@@ -27,7 +27,7 @@ class TennisGame1: TennisGame {
     }
     
     var score: String? {
-        if scores[player1]! == scores[player2]! {
+        if scores[player1.name]! == scores[player2.name]! {
             return nameOfEqualScore()
         }
         if scores.values.contains(where: { $0.isAfter4PointGame }) {
@@ -37,7 +37,7 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfEqualScore() -> String {
-        let score = scores[player1]!.equalName
+        let score = scores[player1.name]!.equalName
         return score
     }
     
@@ -49,7 +49,7 @@ class TennisGame1: TennisGame {
     }
     
     private func advantageName() -> String {
-        let diff = scores[player1]!.absoluteAdvantage(for: scores[player2]!)
+        let diff = scores[player1.name]!.absoluteAdvantage(for: scores[player2.name]!)
         if diff == 1 {
             return "Advantage"
         }
@@ -61,11 +61,11 @@ class TennisGame1: TennisGame {
     private func leadingPlayerName() -> String {
         let leadingPlayer: String
 
-        if scores[player1]! > scores[player2]! {
-            leadingPlayer = player1
+        if scores[player1.name]! > scores[player2.name]! {
+            leadingPlayer = player1.name
         }
-        else if scores[player1]! < scores[player2]! {
-            leadingPlayer = player2
+        else if scores[player1.name]! < scores[player2.name]! {
+            leadingPlayer = player2.name
         }
         else {
             leadingPlayer = "none"
@@ -75,7 +75,7 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfLessThenFourScore() -> String {
-        let score = "\(scores[player1]!.name)-\(scores[player2]!.name)"
+        let score = "\(scores[player1.name]!.name)-\(scores[player2.name]!.name)"
         return score
     }
 }
