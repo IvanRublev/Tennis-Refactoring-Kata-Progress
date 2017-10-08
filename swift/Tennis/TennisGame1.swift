@@ -55,18 +55,14 @@ class TennisGame1: TennisGame {
     }
     
     private func advantageName() -> String {
-        let diff = scores[player1.name]!.absoluteAdvantage(for: scores[player2.name]!)
-        if diff == 1 {
-            return "Advantage"
-        }
-        else {
-            return "Win for"
-        }
+        let name = player1.score.advantageName(for: player2.score) ?? ""
+        return name
     }
     
     private func leadingPlayerName() -> String {
         let leadingPlayer = Player.leader(player1: player1, player2: player2)
-        return leadingPlayer?.name ?? ""
+        let name = leadingPlayer?.name ?? ""
+        return name
     }
     
     private func nameOfLessThenFourScore() -> String {

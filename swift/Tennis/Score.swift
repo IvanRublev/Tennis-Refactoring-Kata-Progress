@@ -48,9 +48,22 @@ class Score: Equatable, Comparable {
         return equalName
     }
     
-    func absoluteAdvantage(for score: Score) -> Int {
+    private func absoluteAdvantage(for score: Score) -> Int {
         let diff = abs(value-score.value)
         return diff
+    }
+    
+    func advantageName(for score: Score) -> String? {
+        let diff = self.absoluteAdvantage(for: score)
+        if diff == 1 {
+            return "Advantage"
+        }
+        else if diff > 1 {
+            return "Win for"
+        }
+        else {
+            return nil
+        }
     }
     
     var isAfter4PointGame: Bool {
