@@ -11,7 +11,6 @@ class TennisGame1: TennisGame {
     private let player1: Player
     private let player2: Player
     private let players: [String : Player]
-    private let scores: [String : Score]
     
     required init(player1: String, player2: String) {
         self.player1 = Player(name: player1)
@@ -21,11 +20,6 @@ class TennisGame1: TennisGame {
         players[player1] = self.player1
         players[player2] = self.player2
         self.players = players
-
-        var scores = [String : Score]()
-        scores[player1] = self.player1.score
-        scores[player2] = self.player2.score
-        self.scores = scores
     }
 
     func wonPoint(_ playerName: String) {
@@ -33,17 +27,17 @@ class TennisGame1: TennisGame {
     }
     
     var score: String? {
-        if scores[player1.name]! == scores[player2.name]! {
+        if player1.score == player2.score {
             return nameOfEqualScore()
         }
-        if scores.values.contains(where: { $0.isAfter4PointGame }) {
+        if players.values.contains(where: { $0.score.isAfter4PointGame }) {
             return nameOfGreaterThenFourScore()
         }
         return nameOfLessThenFourScore()
     }
     
     private func nameOfEqualScore() -> String {
-        let score = scores[player1.name]!.equalName
+        let score = player1.score.equalName
         return score
     }
     
@@ -66,7 +60,7 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfLessThenFourScore() -> String {
-        let score = "\(scores[player1.name]!.name)-\(scores[player2.name]!.name)"
+        let score = "\(player1.score.name)-\(player2.score.name)"
         return score
     }
 }
