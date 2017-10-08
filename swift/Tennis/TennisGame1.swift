@@ -111,18 +111,11 @@ class TennisGame1: TennisGame {
     
     private func nameOfLessThenFourScore() -> String {
         var score = ""
-        var tempScore = 0
-        for i in 1..<3 {
-            if i == 1 {
-                tempScore = score1
-            }
-            else {
-                score = "\(score)-"
-                tempScore = score2
-            }
-            let tempScoreName = standardName(for: tempScore)
-            score = "\(score)\(tempScoreName)"
-        }
+        
+        let score1Name = standardName(for: score1)
+        let score2Name = standardName(for: score2)
+        score = "\(score1Name)-\(score2Name)"
+        
         return score
     }
 }
