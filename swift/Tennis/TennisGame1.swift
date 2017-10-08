@@ -43,14 +43,17 @@ class TennisGame1: TennisGame {
         var score = ""
         
         if 0...2 ~= score1 {
-            let name = standardName(for: score1)
-            score = "\(name)-All"
+            score = "\(score1Name)-All"
         }
         else {
             score = "Deuce"
         }
 
         return score
+    }
+    
+    private var score1Name: String {
+        return standardName(for: score1)
     }
     
     private func standardName(for score: Int) -> String {
@@ -110,12 +113,11 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfLessThenFourScore() -> String {
-        var score = ""
-        
-        let score1Name = standardName(for: score1)
-        let score2Name = standardName(for: score2)
-        score = "\(score1Name)-\(score2Name)"
-        
+        let score = "\(score1Name)-\(score2Name)"
         return score
+    }
+    
+    private var score2Name: String {
+        return standardName(for: score2)
     }
 }
