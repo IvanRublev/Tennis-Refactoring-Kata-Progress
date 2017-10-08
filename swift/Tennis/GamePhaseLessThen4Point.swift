@@ -17,6 +17,6 @@ class GamePhaseLessThen4Point: GamePhase {
     }
     
     var scoresDescription: String {
-        return ""
+        return "\(score1.name)-\(score2.name)"
     }
 }
