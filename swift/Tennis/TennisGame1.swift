@@ -59,19 +59,8 @@ class TennisGame1: TennisGame {
     }
     
     private func leadingPlayerName() -> String {
-        let leadingPlayer: String
-
-        if scores[player1.name]! > scores[player2.name]! {
-            leadingPlayer = player1.name
-        }
-        else if scores[player1.name]! < scores[player2.name]! {
-            leadingPlayer = player2.name
-        }
-        else {
-            leadingPlayer = "none"
-        }
-        
-        return leadingPlayer
+        let leadingPlayer = Player.leader(player1: player1, player2: player2)
+        return leadingPlayer?.name ?? ""
     }
     
     private func nameOfLessThenFourScore() -> String {
