@@ -10,11 +10,17 @@ import Foundation
 class TennisGame1: TennisGame {
     private let player1: Player
     private let player2: Player
+    private let players: [String : Player]
     private let scores: [String : Score]
     
     required init(player1: String, player2: String) {
         self.player1 = Player(name: player1)
         self.player2 = Player(name: player2)
+        
+        var players = [String : Player]()
+        players[player1] = self.player1
+        players[player2] = self.player2
+        self.players = players
 
         var scores = [String : Score]()
         scores[player1] = self.player1.score
@@ -23,7 +29,7 @@ class TennisGame1: TennisGame {
     }
 
     func wonPoint(_ playerName: String) {
-        scores[playerName]?.plusPoint()
+        players[playerName]?.wonPoint()
     }
     
     var score: String? {

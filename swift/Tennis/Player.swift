@@ -30,4 +30,8 @@ class Player {
     func isLeading(for otherPlayer: Player) -> Bool {
         return score > otherPlayer.score
     }
+    
+    func wonPoint() {
+        score.plusPoint()
+    }
 }
