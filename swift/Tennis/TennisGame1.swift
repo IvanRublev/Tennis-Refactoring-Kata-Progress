@@ -29,41 +29,5 @@ class TennisGame1: TennisGame {
     var score: String? {
         let phase = gamePhase(player1: player1, player2: player2)
         return phase.scoresDescription
-        
-        if player1.isEqualScore(for: player2) {
-            return nameOfEqualScore()
-        }
-        if players.values.contains(where: { $0.isAfter4PointGame() }) {
-            return nameOfGreaterThenFourScore()
-        }
-        return nameOfLessThenFourScore()
-    }
-    
-    private func nameOfEqualScore() -> String {
-        let score = player1.score.equalName
-        return score
-    }
-    
-    private func nameOfGreaterThenFourScore() -> String {
-        let advantage = advantageName()
-        let leadingPlayer = leadingPlayerName()
-        let score = "\(advantage) \(leadingPlayer)"
-        return score
-    }
-    
-    private func advantageName() -> String {
-        let name = player1.score.advantageName(for: player2.score) ?? ""
-        return name
-    }
-    
-    private func leadingPlayerName() -> String {
-        let leadingPlayer = Player.leader(player1: player1, player2: player2)
-        let name = leadingPlayer?.name ?? ""
-        return name
-    }
-    
-    private func nameOfLessThenFourScore() -> String {
-        let score = "\(player1.score.name)-\(player2.score.name)"
-        return score
     }
 }
