@@ -8,26 +8,23 @@
 import Foundation
 
 class TennisGame1: TennisGame {
-    private let player1: Player
-    private let player2: Player
-    private let players: [String : Player]
+    private let players: [Player]
+    private let namesPlayers: [String : Player]
     
     required init(player1: String, player2: String) {
-        self.player1 = Player(name: player1)
-        self.player2 = Player(name: player2)
+        players = [Player(name: player1), Player(name: player2)]
         
-        var players = [String : Player]()
-        players[player1] = self.player1
-        players[player2] = self.player2
-        self.players = players
+        var namesPlayers = [String : Player]()
+        players.forEach { namesPlayers[$0.name] = $0 }
+        self.namesPlayers = namesPlayers
     }
 
     func wonPoint(_ playerName: String) {
-        players[playerName]?.wonPoint()
+        namesPlayers[playerName]?.wonPoint()
     }
     
     var score: String? {
-        let phase = gamePhase(player1: player1, player2: player2)
+        let phase = gamePhase(player1: players.first!, player2: players.last!)
         return phase.scoresDescription
     }
 }
