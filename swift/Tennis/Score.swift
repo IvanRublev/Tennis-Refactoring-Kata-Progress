@@ -10,7 +10,7 @@ import Foundation
 class Score: Equatable, Comparable {
     private var value = 0
     
-    func wonPoint() {
+    func plusPoint() {
         value+=1
     }
     
