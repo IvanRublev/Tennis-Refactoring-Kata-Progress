@@ -27,11 +27,19 @@ class Player {
         self.name = name
     }
     
+    func wonPoint() {
+        score.plusPoint()
+    }
+    
     func isLeading(for otherPlayer: Player) -> Bool {
         return score > otherPlayer.score
     }
     
-    func wonPoint() {
-        score.plusPoint()
+    func isEqualScore(for otherPlayer: Player) -> Bool {
+        return score == otherPlayer.score
+    }
+    
+    func isAfter4PointGame() -> Bool {
+        return score.isAfter4PointGame
     }
 }

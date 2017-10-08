@@ -27,10 +27,10 @@ class TennisGame1: TennisGame {
     }
     
     var score: String? {
-        if player1.score == player2.score {
+        if player1.isEqualScore(for: player2) {
             return nameOfEqualScore()
         }
-        if players.values.contains(where: { $0.score.isAfter4PointGame }) {
+        if players.values.contains(where: { $0.isAfter4PointGame() }) {
             return nameOfGreaterThenFourScore()
         }
         return nameOfLessThenFourScore()
