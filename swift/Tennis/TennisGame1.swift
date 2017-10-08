@@ -58,21 +58,31 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfGreaterThenFourScore() -> String {
-        var score = ""
-        let minusResult = score1-score2
-        if minusResult == 1 {
-            score = "Advantage player1"
-        }
-        else if minusResult == -1 {
-            score = "Advantage player2"
-        }
-        else if minusResult >= 2 {
-            score = "Win for player1"
+        let player1Ahead = score1-score2
+        assert(player1Ahead != 0, "Can't happen here")
+        
+        let leadingPlayer: String
+        if player1Ahead > 0 {
+            leadingPlayer = player1
         }
         else {
-            score = "Win for player2"
+            leadingPlayer = player2
         }
+        
+        let aheadAbsolute = abs(player1Ahead)
+        let advantage = advantageName(forAheadScore: aheadAbsolute)
+
+        let score = "\(advantage) \(leadingPlayer)"
         return score
+    }
+    
+    private func advantageName(forAheadScore score: Int) -> String {
+        if score == 1 {
+            return "Advantage"
+        }
+        else {
+            return "Win for"
+        }
     }
     
     private func nameOfLessThenFourScore() -> String {
