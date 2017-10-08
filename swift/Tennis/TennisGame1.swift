@@ -29,7 +29,6 @@ class TennisGame1: TennisGame {
     
     var score: String? {
         var score = ""
-        var tempScore = 0
         if score1 == score2 {
             switch score1 {
             case 0:
@@ -61,6 +60,7 @@ class TennisGame1: TennisGame {
             }
         }
         else {
+            var tempScore = 0
             for i in 1..<3 {
                 if i == 1 {
                     tempScore = score1
