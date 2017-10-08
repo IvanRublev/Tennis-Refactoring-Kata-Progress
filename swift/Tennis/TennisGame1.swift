@@ -10,20 +10,19 @@ import Foundation
 class TennisGame1: TennisGame {
     private let player1: String
     private let player2: String
-    private var score1: Int
-    private var score2: Int
+    private var score1: Int = 0
+    private var score2: Int = 0
     
     required init(player1: String, player2: String) {
         self.player1 = player1
         self.player2 = player2
-        self.score1 = 0
-        self.score2 = 0
     }
 
     func wonPoint(_ playerName: String) {
         if playerName == "player1" {
             score1 += 1
-        } else {
+        }
+        else {
             score2 += 1
         }
     }
@@ -31,10 +30,8 @@ class TennisGame1: TennisGame {
     var score: String? {
         var score = ""
         var tempScore = 0
-        if score1 == score2
-        {
-            switch score1
-            {
+        if score1 == score2 {
+            switch score1 {
             case 0:
                 score = "Love-All"
 
@@ -46,25 +43,33 @@ class TennisGame1: TennisGame {
 
             default:
                 score = "Deuce"
-                
             }
         }
-        else if score1>=4 || score2>=4
-        {
+        else if score1 >= 4 || score2 >= 4 {
             let minusResult = score1-score2
-            if minusResult==1 { score = "Advantage player1" }
-            else if minusResult  == -1 { score = "Advantage player2" }
-            else if minusResult>=2 { score = "Win for player1" }
-            else { score = "Win for player2" }
+            if minusResult == 1 {
+                score = "Advantage player1"
+            }
+            else if minusResult == -1 {
+                score = "Advantage player2"
+            }
+            else if minusResult >= 2 {
+                score = "Win for player1"
+            }
+            else {
+                score = "Win for player2"
+            }
         }
-        else
-        {
-            for i in 1..<3
-            {
-                if i==1 { tempScore = score1 }
-                else { score = "\(score)-"; tempScore = score2 }
-                switch tempScore
-                {
+        else {
+            for i in 1..<3 {
+                if i == 1 {
+                    tempScore = score1
+                }
+                else {
+                    score = "\(score)-"
+                    tempScore = score2
+                }
+                switch tempScore {
                 case 0:
                     score = "\(score)Love"
 
@@ -79,12 +84,9 @@ class TennisGame1: TennisGame {
 
                 default:
                     break
-
                 }
             }
         }
         return score
     }
-    
-    
 }
