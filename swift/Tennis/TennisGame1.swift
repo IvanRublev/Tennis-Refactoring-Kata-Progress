@@ -77,11 +77,10 @@ class TennisGame1: TennisGame {
     private func leadingPlayerName() -> String {
         let leadingPlayer: String
 
-        let player1Ahead = score1-score2
-        if player1Ahead > 0 {
+        if score1 > score2 {
             leadingPlayer = player1
         }
-        else if player1Ahead < 0 {
+        else if score1 < score2 {
             leadingPlayer = player2
         }
         else {
