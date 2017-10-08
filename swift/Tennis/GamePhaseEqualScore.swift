@@ -15,6 +15,6 @@ class GamePhaseEqualScore: GamePhase {
     }
     
     var scoresDescription: String {
-        return ""
+        return score.equalName
     }
 }
