@@ -35,11 +35,11 @@ class Player {
         return score > otherPlayer.score
     }
     
-    func isEqualScore(for otherPlayer: Player) -> Bool {
+    func isEqualScore(with otherPlayer: Player) -> Bool {
         return score == otherPlayer.score
     }
     
-    func isAfter4PointGame() -> Bool {
+    func isPlayingAfter4PointGame() -> Bool {
         return score.isAfter4PointGame
     }
 }

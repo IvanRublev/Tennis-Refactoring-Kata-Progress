@@ -8,10 +8,10 @@
 import Foundation
 
 func gamePhase(player1: Player, player2: Player) -> GamePhase {
-    if player1.isEqualScore(for: player2) {
+    if player1.isEqualScore(with: player2) {
         return GamePhaseEqualScore(score: player1.score)
     }
-    else if player1.isAfter4PointGame() || player2.isAfter4PointGame() {
+    else if player1.isPlayingAfter4PointGame() || player2.isPlayingAfter4PointGame() {
         return GamePhaseAfter4Point(player1: player1, player2: player2)
     }
     else {

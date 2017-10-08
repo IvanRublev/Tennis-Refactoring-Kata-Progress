@@ -78,11 +78,11 @@
 			children = (
 				52EF22811F89316100CAD019 /* TennisGame1.swift */,
 				520065E11F8A5D13006EDBDF /* Score.swift */,
+				520065E31F8A6927006EDBDF /* Player.swift */,
 				520065ED1F8AB950006EDBDF /* GamePhase.swift */,
 				520065EF1F8ABAC0006EDBDF /* GamePhaseEqualScore.swift */,
 				520065F11F8ABAC7006EDBDF /* GamePhaseAfter4Point.swift */,
 				520065F31F8ABAD4006EDBDF /* GamePhaseLessThen4Point.swift */,
-				520065E31F8A6927006EDBDF /* Player.swift */,
 				520065DD1F8972C5006EDBDF /* TennisGame2.swift */,
 				520065DF1F897A01006EDBDF /* TennisGame3.swift */,
 				52EF227F1F89307F00CAD019 /* TennisGame.swift */,

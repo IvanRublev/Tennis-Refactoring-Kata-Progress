@@ -48,13 +48,8 @@ class Score: Equatable, Comparable {
         return equalName
     }
     
-    private func absoluteAdvantage(for score: Score) -> Int {
-        let diff = abs(value-score.value)
-        return diff
-    }
-    
     func advantageName(for score: Score) -> String? {
-        let diff = self.absoluteAdvantage(for: score)
+        let diff = abs(value-score.value)
         if diff == 1 {
             return "Advantage"
         }
