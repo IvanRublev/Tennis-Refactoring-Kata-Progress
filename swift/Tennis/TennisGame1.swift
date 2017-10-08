@@ -44,10 +44,6 @@ class TennisGame1: TennisGame {
         return score
     }
     
-    private var score1Name: String {
-        return score1.name
-    }
-    
     private func nameOfGreaterThenFourScore() -> String {
         let advantage = advantageName()
         let leadingPlayer = leadingPlayerName()
@@ -82,11 +78,7 @@ class TennisGame1: TennisGame {
     }
     
     private func nameOfLessThenFourScore() -> String {
-        let score = "\(score1Name)-\(score2Name)"
+        let score = "\(score1.name)-\(score2.name)"
         return score
-    }
-    
-    private var score2Name: String {
-        return score2.name
     }
 }
