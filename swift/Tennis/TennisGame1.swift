@@ -27,6 +27,9 @@ class TennisGame1: TennisGame {
     }
     
     var score: String? {
+        let phase = gamePhase(player1: player1, player2: player2)
+        return phase.scoresDescription
+        
         if player1.isEqualScore(for: player2) {
             return nameOfEqualScore()
         }
